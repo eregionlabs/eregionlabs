@@ -683,15 +683,16 @@
             position: relative;
         }
 
-        .process-step:not(:last-child) .process-number::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 100%;
-            width: calc(100% - 64px);
-            height: 2px;
-            background: var(--color-border);
-            transform: translateX(20px);
+        @media (min-width: 1025px) {
+            .process-step:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 32px;
+                left: calc(50% + 32px);
+                width: calc(100% - 64px + var(--space-8));
+                height: 2px;
+                background: var(--color-border);
+            }
         }
 
         .process-title {
@@ -863,6 +864,55 @@
             background: var(--color-bg-secondary);
             border: 1px solid var(--color-border);
             margin-top: 4px;
+        }
+
+        .mockup-tablet {
+            width: 160px;
+            height: 200px;
+            background: var(--color-bg-primary);
+            border-radius: 16px;
+            border: 3px solid var(--color-bg-tertiary);
+            padding: 8px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mockup-tablet-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .mockup-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            margin: 0 auto 8px;
+        }
+
+        .mockup-video-placeholder {
+            flex: 1;
+            border-radius: 6px;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .mockup-video-placeholder::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            opacity: 0.6;
+        }
+
+        .mockup-body-healthcare {
+            align-items: center;
         }
 
         .mockup-desktop {
@@ -1521,51 +1571,9 @@
             height: 3px;
             background: var(--gradient-primary);
             z-index: 10000;
-            transition: width 0.1s linear;
+            will-change: transform;
+            transform-origin: left;
             box-shadow: 0 0 10px rgba(16, 185, 129, 0.5), 0 0 20px rgba(16, 185, 129, 0.3);
-        }
-
-        /* Custom Cursor */
-        .custom-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--color-accent-primary);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99999;
-            transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
-            mix-blend-mode: difference;
-        }
-
-        .custom-cursor.hover {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(16, 185, 129, 0.1);
-            border-color: var(--color-accent-secondary);
-        }
-
-        .custom-cursor.clicking {
-            transform: translate(-50%, -50%) scale(0.8);
-        }
-
-        .cursor-dot {
-            position: fixed;
-            width: 6px;
-            height: 6px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99999;
-            transform: translate(-50%, -50%);
-        }
-
-        @media (hover: none) {
-            .custom-cursor,
-            .cursor-dot {
-                display: none;
-            }
         }
 
         /* Particle Canvas */
@@ -1903,7 +1911,7 @@
         .process-grid::before {
             content: '';
             position: absolute;
-            top: 50%;
+            top: 32px;
             left: 0;
             right: 0;
             height: 2px;
@@ -1930,63 +1938,6 @@
         /* ============================================
            NEXT-LEVEL ELITE EFFECTS
            ============================================ */
-
-        /* Page Loader */
-        .page-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--color-bg-primary);
-            z-index: 100000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .page-loader.loaded {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .loader-content {
-            text-align: center;
-        }
-
-        .loader-logo {
-            width: 60px;
-            height: 60px;
-            animation: loader-pulse 1.5s ease-in-out infinite;
-        }
-
-        .loader-bar {
-            width: 200px;
-            height: 3px;
-            background: var(--color-bg-tertiary);
-            border-radius: 3px;
-            margin-top: 24px;
-            overflow: hidden;
-        }
-
-        .loader-progress {
-            height: 100%;
-            background: var(--gradient-primary);
-            border-radius: 3px;
-            animation: loader-fill 1.5s ease-out forwards;
-        }
-
-        @keyframes loader-pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-
-        @keyframes loader-fill {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
 
         /* Typewriter Effect */
         .typewriter-container {
@@ -2244,13 +2195,8 @@
             .hero-content > *,
             .gradient-text,
             .float-animation,
-            .custom-cursor,
-            .cursor-dot,
             .particle-canvas,
             .spotlight,
-            .page-loader,
-            .loader-logo,
-            .loader-progress,
             .btn-primary::after,
             .hero-badge-dot::after,
             .tech-tag,
@@ -2265,37 +2211,15 @@
                 transform: none;
             }
 
-            .page-loader {
+            .particle-canvas {
                 display: none;
             }
         }
     </style>
 </head>
 <body class="page-transition">
-    <!-- Page Loader -->
-    <div class="page-loader" id="page-loader" aria-hidden="true">
-        <div class="loader-content">
-            <svg class="loader-logo" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="loader-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#10B981"/>
-                        <stop offset="100%" stop-color="#06B6D4"/>
-                    </linearGradient>
-                </defs>
-                <path d="M255.9 19.77C241.5 109.6 229.4 163 196.2 196.2c-33.2 33.2-86.6 45.3-176.43 59.7C109.6 270.3 163 282.4 196.2 315.7c33.2 33.2 45.3 86.6 59.7 176.5 14.4-89.9 26.5-143.3 59.7-176.6 33.3-33.2 86.7-45.3 176.6-59.7-89.9-14.4-143.3-26.5-176.5-59.7-33.3-33.2-45.4-86.6-59.8-176.43z" fill="url(#loader-gradient)"/>
-            </svg>
-            <div class="loader-bar">
-                <div class="loader-progress"></div>
-            </div>
-        </div>
-    </div>
-
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress" aria-hidden="true"></div>
-
-    <!-- Custom Cursor -->
-    <div class="custom-cursor" aria-hidden="true"></div>
-    <div class="cursor-dot" aria-hidden="true"></div>
 
     <!-- Mouse Spotlight -->
     <div class="spotlight" id="spotlight" aria-hidden="true"></div>
@@ -2453,9 +2377,8 @@
                     <article class="service-card">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                                <polyline points="2 17 12 22 22 17"/>
-                                <polyline points="2 12 12 17 22 12"/>
+                                <circle cx="12" cy="12" r="10"/>
+                                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
                             </svg>
                         </div>
                         <h3 class="service-title">Product Strategy</h3>
@@ -2547,20 +2470,19 @@
                     <article class="portfolio-card">
                         <div class="portfolio-mockup">
                             <div class="mockup-device">
-                                <div class="mockup-phone">
-                                    <div class="mockup-phone-screen">
+                                <div class="mockup-tablet">
+                                    <div class="mockup-tablet-screen">
                                         <div class="mockup-screen-content">
                                             <div class="mockup-header">
                                                 <div class="mockup-header-dots">
                                                     <span></span><span></span><span></span>
                                                 </div>
                                             </div>
-                                            <div class="mockup-body">
-                                                <div class="mockup-line accent"></div>
-                                                <div class="mockup-line short"></div>
+                                            <div class="mockup-body mockup-body-healthcare">
+                                                <div class="mockup-avatar"></div>
+                                                <div class="mockup-line short accent"></div>
                                                 <div class="mockup-line medium"></div>
-                                                <div class="mockup-card-placeholder"></div>
-                                                <div class="mockup-line short"></div>
+                                                <div class="mockup-video-placeholder"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -3028,55 +2950,22 @@
         // ============================================
         const scrollProgress = document.querySelector('.scroll-progress');
 
-        function updateScrollProgress() {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            scrollProgress.style.width = scrollPercent + '%';
-        }
+        if (scrollProgress) {
+            scrollProgress.style.width = '100%';
 
-        window.addEventListener('scroll', updateScrollProgress, { passive: true });
-
-        // ============================================
-        // 2. CUSTOM CURSOR
-        // ============================================
-        const cursor = document.querySelector('.custom-cursor');
-        const cursorDot = document.querySelector('.cursor-dot');
-
-        if (cursor && cursorDot && window.matchMedia('(hover: hover)').matches && !prefersReducedMotion) {
-            let mouseX = 0, mouseY = 0;
-            let cursorX = 0, cursorY = 0;
-
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                cursorDot.style.left = mouseX + 'px';
-                cursorDot.style.top = mouseY + 'px';
-            });
-
-            function animateCursor() {
-                cursorX += (mouseX - cursorX) * 0.15;
-                cursorY += (mouseY - cursorY) * 0.15;
-                cursor.style.left = cursorX + 'px';
-                cursor.style.top = cursorY + 'px';
-                requestAnimationFrame(animateCursor);
+            function updateScrollProgress() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = scrollTop / docHeight;
+                scrollProgress.style.transform = `scaleX(${scrollPercent})`;
             }
-            animateCursor();
 
-            // Hover effect on interactive elements
-            const interactiveElements = document.querySelectorAll('a, button, .btn, .service-card, .portfolio-card, .testimonial-card');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            });
-
-            // Click effect
-            document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
-            document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+            window.addEventListener('scroll', updateScrollProgress, { passive: true });
+            updateScrollProgress();
         }
 
         // ============================================
-        // 3. PARTICLE CONSTELLATION SYSTEM
+        // 2. PARTICLE CONSTELLATION SYSTEM
         // ============================================
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas?.getContext('2d');
@@ -3112,7 +3001,6 @@
                 }
 
                 update() {
-                    // Mouse interaction
                     if (mouse.x !== null && mouse.y !== null) {
                         let dx = mouse.x - this.x;
                         let dy = mouse.y - this.y;
@@ -3131,11 +3019,9 @@
                         }
                     }
 
-                    // Gentle floating motion
                     this.x += this.speedX;
                     this.y += this.speedY;
 
-                    // Return to base with elastic effect
                     let dx = this.baseX - this.x;
                     let dy = this.baseY - this.y;
                     this.x += dx * 0.02;
@@ -3182,7 +3068,6 @@
                 requestAnimationFrame(animateParticles);
             }
 
-            // Mouse tracking relative to hero
             const hero = document.querySelector('.hero');
             hero.addEventListener('mousemove', (e) => {
                 const rect = canvas.getBoundingClientRect();
@@ -3206,7 +3091,7 @@
         }
 
         // ============================================
-        // 4. 3D TILT EFFECT FOR CARDS
+        // 3. 3D TILT EFFECT FOR CARDS
         // ============================================
         const tiltCards = document.querySelectorAll('.service-card, .portfolio-card, .testimonial-card');
 
@@ -3415,27 +3300,7 @@
         // ============================================
 
         // ============================================
-        // 11. PAGE LOADER
-        // ============================================
-        const pageLoader = document.getElementById('page-loader');
-
-        if (pageLoader) {
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    pageLoader.classList.add('loaded');
-                }, 1500);
-            });
-
-            // Fallback in case load event already fired
-            if (document.readyState === 'complete') {
-                setTimeout(() => {
-                    pageLoader.classList.add('loaded');
-                }, 1500);
-            }
-        }
-
-        // ============================================
-        // 12. MOUSE SPOTLIGHT EFFECT
+        // 11. MOUSE SPOTLIGHT EFFECT
         // ============================================
         const spotlight = document.getElementById('spotlight');
 
