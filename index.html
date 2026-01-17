@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initiaGl-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Eregion Labs - We craft exceptional mobile and web applications that drive business growth. Expert app development for startups and enterprises.">
     <meta name="keywords" content="app development, mobile apps, web applications, software development, iOS, Android, startup, enterprise">
     <meta name="author" content="Eregion Labs LLC">
@@ -740,6 +740,333 @@
         }
 
         /* ============================================
+           PORTFOLIO SECTION
+           ============================================ */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-8);
+            margin-top: var(--space-12);
+        }
+
+        .portfolio-card {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-border-hover);
+            box-shadow: var(--shadow-xl), 0 0 40px rgba(16, 185, 129, 0.1);
+        }
+
+        .portfolio-mockup {
+            position: relative;
+            height: 240px;
+            background: linear-gradient(135deg, var(--color-bg-tertiary) 0%, var(--color-bg-secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .portfolio-mockup::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-subtle);
+            opacity: 0.5;
+        }
+
+        .mockup-device {
+            position: relative;
+            z-index: 1;
+        }
+
+        .mockup-phone {
+            width: 120px;
+            height: 200px;
+            background: var(--color-bg-primary);
+            border-radius: 24px;
+            border: 3px solid var(--color-bg-tertiary);
+            padding: 8px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mockup-phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .mockup-screen-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mockup-header {
+            height: 24px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+        }
+
+        .mockup-header-dots {
+            display: flex;
+            gap: 3px;
+        }
+
+        .mockup-header-dots span {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .mockup-body {
+            flex: 1;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .mockup-line {
+            height: 6px;
+            border-radius: 3px;
+            background: var(--color-bg-tertiary);
+        }
+
+        .mockup-line.short {
+            width: 60%;
+        }
+
+        .mockup-line.medium {
+            width: 80%;
+        }
+
+        .mockup-line.accent {
+            background: var(--gradient-primary);
+            opacity: 0.6;
+        }
+
+        .mockup-card-placeholder {
+            height: 40px;
+            border-radius: 6px;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            margin-top: 4px;
+        }
+
+        .mockup-desktop {
+            width: 180px;
+            height: 120px;
+            background: var(--color-bg-primary);
+            border-radius: 8px;
+            border: 3px solid var(--color-bg-tertiary);
+            padding: 4px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mockup-desktop::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 8px;
+            background: var(--color-bg-tertiary);
+            margin: 6px auto 0;
+            border-radius: 4px;
+        }
+
+        .mockup-desktop-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .mockup-sidebar {
+            width: 30px;
+            background: var(--color-bg-secondary);
+            padding: 6px 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mockup-sidebar-item {
+            height: 4px;
+            border-radius: 2px;
+            background: var(--color-bg-tertiary);
+        }
+
+        .mockup-sidebar-item.active {
+            background: var(--gradient-primary);
+        }
+
+        .mockup-main {
+            flex: 1;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mockup-chart {
+            flex: 1;
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            padding-top: 8px;
+        }
+
+        .mockup-bar {
+            flex: 1;
+            background: var(--gradient-primary);
+            border-radius: 2px 2px 0 0;
+            opacity: 0.7;
+        }
+
+        .portfolio-info {
+            padding: var(--space-6);
+        }
+
+        .portfolio-category {
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-semibold);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-wide);
+            color: var(--color-accent-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .portfolio-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-3);
+        }
+
+        .portfolio-description {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-relaxed);
+            margin-bottom: var(--space-4);
+        }
+
+        .portfolio-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+
+        .tech-tag {
+            font-size: var(--font-size-xs);
+            padding: var(--space-1) var(--space-3);
+            background: var(--color-bg-glass);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-full);
+            color: var(--color-text-secondary);
+        }
+
+        /* ============================================
+           TESTIMONIALS SECTION
+           ============================================ */
+        .testimonials-section {
+            background: var(--color-bg-secondary);
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-8);
+            margin-top: var(--space-12);
+        }
+
+        .testimonial-card {
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            position: relative;
+            transition: border-color var(--transition-base), box-shadow var(--transition-base);
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--color-border-hover);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-quote-icon {
+            position: absolute;
+            top: var(--space-6);
+            right: var(--space-6);
+            width: 40px;
+            height: 40px;
+            color: var(--color-accent-primary);
+            opacity: 0.2;
+        }
+
+        .testimonial-content {
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-relaxed);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-6);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-bold);
+            color: white;
+        }
+
+        .testimonial-info h4 {
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-1);
+        }
+
+        .testimonial-info p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 2px;
+            margin-bottom: var(--space-4);
+        }
+
+        .testimonial-rating svg {
+            width: 16px;
+            height: 16px;
+            color: #FBBF24;
+        }
+
+        /* ============================================
            ABOUT SECTION
            ============================================ */
         .about-content {
@@ -951,6 +1278,14 @@
            RESPONSIVE DESIGN
            ============================================ */
         @media (max-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .about-content {
                 grid-template-columns: 1fr;
                 gap: var(--space-12);
@@ -1081,6 +1416,22 @@
 
             .process-step:not(:last-child) .process-number::after {
                 display: none;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-mockup {
+                height: 200px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                padding: var(--space-6);
             }
 
             .footer-content {
@@ -1341,6 +1692,137 @@
             </div>
         </section>
 
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section" aria-labelledby="portfolio-title">
+            <div class="container">
+                <header class="section-header fade-in">
+                    <span class="section-label">Our Work</span>
+                    <h2 id="portfolio-title" class="section-title">Projects that make an impact</h2>
+                    <p class="section-description">
+                        A selection of apps and platforms we've built for clients across industries.
+                    </p>
+                </header>
+
+                <div class="portfolio-grid fade-in-stagger">
+                    <!-- Project 1: Fintech Mobile App -->
+                    <article class="portfolio-card">
+                        <div class="portfolio-mockup">
+                            <div class="mockup-device">
+                                <div class="mockup-phone">
+                                    <div class="mockup-phone-screen">
+                                        <div class="mockup-screen-content">
+                                            <div class="mockup-header">
+                                                <div class="mockup-header-dots">
+                                                    <span></span><span></span><span></span>
+                                                </div>
+                                            </div>
+                                            <div class="mockup-body">
+                                                <div class="mockup-line short accent"></div>
+                                                <div class="mockup-line medium"></div>
+                                                <div class="mockup-line"></div>
+                                                <div class="mockup-card-placeholder"></div>
+                                                <div class="mockup-card-placeholder"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="portfolio-category">Fintech</span>
+                            <h3 class="portfolio-title">Crestline Mobile Banking</h3>
+                            <p class="portfolio-description">
+                                A next-generation mobile banking app with real-time payments, budgeting tools, and AI-powered financial insights.
+                            </p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">React Native</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">AWS</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Healthcare Platform -->
+                    <article class="portfolio-card">
+                        <div class="portfolio-mockup">
+                            <div class="mockup-device">
+                                <div class="mockup-phone">
+                                    <div class="mockup-phone-screen">
+                                        <div class="mockup-screen-content">
+                                            <div class="mockup-header">
+                                                <div class="mockup-header-dots">
+                                                    <span></span><span></span><span></span>
+                                                </div>
+                                            </div>
+                                            <div class="mockup-body">
+                                                <div class="mockup-line accent"></div>
+                                                <div class="mockup-line short"></div>
+                                                <div class="mockup-line medium"></div>
+                                                <div class="mockup-card-placeholder"></div>
+                                                <div class="mockup-line short"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="portfolio-category">Healthcare</span>
+                            <h3 class="portfolio-title">Healbridge Telehealth</h3>
+                            <p class="portfolio-description">
+                                HIPAA-compliant telehealth platform connecting patients with healthcare providers through secure video consultations.
+                            </p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">Swift</span>
+                                <span class="tech-tag">Kotlin</span>
+                                <span class="tech-tag">WebRTC</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: SaaS Dashboard -->
+                    <article class="portfolio-card">
+                        <div class="portfolio-mockup">
+                            <div class="mockup-device">
+                                <div class="mockup-desktop">
+                                    <div class="mockup-desktop-screen">
+                                        <div class="mockup-sidebar">
+                                            <div class="mockup-sidebar-item active"></div>
+                                            <div class="mockup-sidebar-item"></div>
+                                            <div class="mockup-sidebar-item"></div>
+                                            <div class="mockup-sidebar-item"></div>
+                                        </div>
+                                        <div class="mockup-main">
+                                            <div class="mockup-line short accent"></div>
+                                            <div class="mockup-chart">
+                                                <div class="mockup-bar" style="height: 60%;"></div>
+                                                <div class="mockup-bar" style="height: 80%;"></div>
+                                                <div class="mockup-bar" style="height: 45%;"></div>
+                                                <div class="mockup-bar" style="height: 90%;"></div>
+                                                <div class="mockup-bar" style="height: 70%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="portfolio-category">SaaS</span>
+                            <h3 class="portfolio-title">Lumina Analytics Dashboard</h3>
+                            <p class="portfolio-description">
+                                Enterprise analytics platform with real-time data visualization, custom reporting, and team collaboration features.
+                            </p>
+                            <div class="portfolio-tech">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">GCP</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <!-- Process Section -->
         <section id="process" class="section" aria-labelledby="process-title">
             <div class="container">
@@ -1400,6 +1882,93 @@
                         <div class="stat-value gradient-text">24/7</div>
                         <div class="stat-label">Support Available</div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section testimonials-section" aria-labelledby="testimonials-title">
+            <div class="container">
+                <header class="section-header fade-in">
+                    <span class="section-label">Client Stories</span>
+                    <h2 id="testimonials-title" class="section-title">What our clients say</h2>
+                    <p class="section-description">
+                        Don't just take our word for it — hear from the teams we've partnered with.
+                    </p>
+                </header>
+
+                <div class="testimonials-grid fade-in-stagger">
+                    <!-- Testimonial 1 -->
+                    <article class="testimonial-card">
+                        <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                        </svg>
+                        <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-content">
+                            "Eregion Labs transformed our outdated systems into a sleek, modern platform. Their team was incredibly responsive and delivered beyond our expectations. Our user engagement increased by 340% within three months."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar" aria-hidden="true">TL</div>
+                            <div class="testimonial-info">
+                                <h3>Tara Lindell</h3>
+                                <p>CTO, Crestline Financial</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 2 -->
+                    <article class="testimonial-card">
+                        <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                        </svg>
+                        <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-content">
+                            "Working with Eregion Labs felt like having an extension of our own team. They understood our vision immediately and built a telehealth solution that our patients and doctors love using every day."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar" aria-hidden="true">MB</div>
+                            <div class="testimonial-info">
+                                <h3>Dr. Marcus Brennan</h3>
+                                <p>Founder, Healbridge Health</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Testimonial 3 -->
+                    <article class="testimonial-card">
+                        <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                        </svg>
+                        <div class="testimonial-rating" aria-label="5 out of 5 stars">
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-content">
+                            "From day one, Eregion Labs demonstrated exceptional technical skills and project management. They delivered our analytics platform on time and helped us scale to 50,000+ daily active users."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar" aria-hidden="true">PV</div>
+                            <div class="testimonial-info">
+                                <h3>Priya Vasquez</h3>
+                                <p>VP of Product, Lumina Analytics</p>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
