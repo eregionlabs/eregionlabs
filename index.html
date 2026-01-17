@@ -1927,6 +1927,317 @@
             }
         }
 
+        /* ============================================
+           NEXT-LEVEL ELITE EFFECTS
+           ============================================ */
+
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg-primary);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .page-loader.loaded {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            width: 60px;
+            height: 60px;
+            animation: loader-pulse 1.5s ease-in-out infinite;
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 3px;
+            background: var(--color-bg-tertiary);
+            border-radius: 3px;
+            margin-top: 24px;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 3px;
+            animation: loader-fill 1.5s ease-out forwards;
+        }
+
+        @keyframes loader-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes loader-fill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* Typewriter Effect */
+        .typewriter-container {
+            display: inline;
+        }
+
+        .typewriter-word {
+            display: inline-block;
+            position: relative;
+        }
+
+        .typewriter-word::after {
+            content: '|';
+            position: absolute;
+            right: -4px;
+            animation: blink 0.8s infinite;
+            color: var(--color-accent-primary);
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Logo Hover Animation */
+        .logo-icon {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(180deg) scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.5));
+        }
+
+        .logo-text {
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover .logo-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glitch Text Effect */
+        .glitch-text {
+            position: relative;
+        }
+
+        .glitch-text:hover {
+            animation: glitch 0.3s ease;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .glitch-text:hover::before {
+            animation: glitch-1 0.3s ease;
+            color: var(--color-accent-primary);
+            opacity: 0.8;
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+        }
+
+        .glitch-text:hover::after {
+            animation: glitch-2 0.3s ease;
+            color: var(--color-accent-tertiary);
+            opacity: 0.8;
+            clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+        }
+
+        @keyframes glitch-1 {
+            0% { transform: translate(0); }
+            20% { transform: translate(3px, -3px); }
+            40% { transform: translate(-3px, 3px); }
+            60% { transform: translate(3px, -3px); }
+            80% { transform: translate(-3px, 3px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes glitch-2 {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(3px, -3px); }
+            60% { transform: translate(-3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+
+        /* Mouse Spotlight Effect */
+        .spotlight {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9997;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            mix-blend-mode: screen;
+        }
+
+        /* Floating Tech Badges */
+        .portfolio-tech .tech-tag {
+            animation: float-badge 3s ease-in-out infinite;
+        }
+
+        .portfolio-tech .tech-tag:nth-child(1) { animation-delay: 0s; }
+        .portfolio-tech .tech-tag:nth-child(2) { animation-delay: 0.2s; }
+        .portfolio-tech .tech-tag:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes float-badge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Enhanced Service Icon Hover */
+        .service-icon {
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        box-shadow 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Animated Border for CTAs */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        /* Pulse Effect for Badge */
+        .hero-badge-dot {
+            position: relative;
+        }
+
+        .hero-badge-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--color-accent-primary);
+            transform: translate(-50%, -50%);
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+        }
+
+        /* Stats Glow on Hover */
+        .stat-item {
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-item:hover .stat-value {
+            text-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Testimonial Quote Animation */
+        .testimonial-quote-icon {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .testimonial-card:hover .testimonial-quote-icon {
+            transform: scale(1.2) rotate(-10deg);
+            opacity: 0.3;
+        }
+
+        /* Process Step Pulse */
+        .process-step:hover .process-number {
+            animation: step-pulse 0.6s ease;
+        }
+
+        @keyframes step-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); box-shadow: 0 0 30px rgba(16, 185, 129, 0.5); }
+        }
+
+        /* Footer Link Hover Effect */
+        .footer-links a {
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover::before {
+            width: 100%;
+        }
+
         /* Reduced motion preference */
         @media (prefers-reduced-motion: reduce) {
             .gradient-blob,
@@ -1935,7 +2246,16 @@
             .float-animation,
             .custom-cursor,
             .cursor-dot,
-            .particle-canvas {
+            .particle-canvas,
+            .spotlight,
+            .page-loader,
+            .loader-logo,
+            .loader-progress,
+            .btn-primary::after,
+            .hero-badge-dot::after,
+            .tech-tag,
+            .glitch-text::before,
+            .glitch-text::after {
                 animation: none !important;
                 transition: none !important;
             }
@@ -1944,16 +2264,41 @@
                 opacity: 1;
                 transform: none;
             }
+
+            .page-loader {
+                display: none;
+            }
         }
     </style>
 </head>
 <body class="page-transition">
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader" aria-hidden="true">
+        <div class="loader-content">
+            <svg class="loader-logo" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="loader-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#10B981"/>
+                        <stop offset="100%" stop-color="#06B6D4"/>
+                    </linearGradient>
+                </defs>
+                <path d="M255.9 19.77C241.5 109.6 229.4 163 196.2 196.2c-33.2 33.2-86.6 45.3-176.43 59.7C109.6 270.3 163 282.4 196.2 315.7c33.2 33.2 45.3 86.6 59.7 176.5 14.4-89.9 26.5-143.3 59.7-176.6 33.3-33.2 86.7-45.3 176.6-59.7-89.9-14.4-143.3-26.5-176.5-59.7-33.3-33.2-45.4-86.6-59.8-176.43z" fill="url(#loader-gradient)"/>
+            </svg>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress" aria-hidden="true"></div>
 
     <!-- Custom Cursor -->
     <div class="custom-cursor" aria-hidden="true"></div>
     <div class="cursor-dot" aria-hidden="true"></div>
+
+    <!-- Mouse Spotlight -->
+    <div class="spotlight" id="spotlight" aria-hidden="true"></div>
 
     <!-- Noise Texture Overlay -->
     <div class="noise-overlay" aria-hidden="true"></div>
@@ -3065,7 +3410,159 @@
 
         sections.forEach(section => sectionObserver.observe(section));
 
+        // ============================================
+        // NEXT-LEVEL ELITE EFFECTS
+        // ============================================
+
+        // ============================================
+        // 11. PAGE LOADER
+        // ============================================
+        const pageLoader = document.getElementById('page-loader');
+
+        if (pageLoader) {
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    pageLoader.classList.add('loaded');
+                }, 1500);
+            });
+
+            // Fallback in case load event already fired
+            if (document.readyState === 'complete') {
+                setTimeout(() => {
+                    pageLoader.classList.add('loaded');
+                }, 1500);
+            }
+        }
+
+        // ============================================
+        // 12. MOUSE SPOTLIGHT EFFECT
+        // ============================================
+        const spotlight = document.getElementById('spotlight');
+
+        if (spotlight && !prefersReducedMotion) {
+            let spotlightX = 0, spotlightY = 0;
+            let targetX = 0, targetY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                targetX = e.clientX;
+                targetY = e.clientY;
+            });
+
+            function animateSpotlight() {
+                spotlightX += (targetX - spotlightX) * 0.1;
+                spotlightY += (targetY - spotlightY) * 0.1;
+                spotlight.style.left = spotlightX + 'px';
+                spotlight.style.top = spotlightY + 'px';
+                requestAnimationFrame(animateSpotlight);
+            }
+            animateSpotlight();
+        }
+
+        // ============================================
+        // 13. TYPEWRITER EFFECT FOR HERO
+        // ============================================
+        const heroTitle = document.querySelector('.hero-title');
+
+        if (heroTitle && !prefersReducedMotion) {
+            const gradientText = heroTitle.querySelector('.gradient-text');
+            if (gradientText) {
+                const words = ['people love', 'users trust', 'businesses need', 'teams rely on'];
+                let wordIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                let currentWord = words[0];
+
+                function typeWriter() {
+                    const current = words[wordIndex];
+
+                    if (isDeleting) {
+                        currentWord = current.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        currentWord = current.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+
+                    gradientText.textContent = currentWord;
+
+                    let typeSpeed = isDeleting ? 50 : 100;
+
+                    if (!isDeleting && charIndex === current.length) {
+                        typeSpeed = 2000; // Pause at end
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length;
+                        typeSpeed = 500; // Pause before new word
+                    }
+
+                    setTimeout(typeWriter, typeSpeed);
+                }
+
+                // Start after initial animation
+                setTimeout(typeWriter, 3000);
+            }
+        }
+
+        // ============================================
+        // 14. GLITCH EFFECT SETUP
+        // ============================================
+        const glitchElements = document.querySelectorAll('.service-card h3, .portfolio-title');
+
+        glitchElements.forEach(el => {
+            el.classList.add('glitch-text');
+            el.setAttribute('data-text', el.textContent);
+        });
+
+        // ============================================
+        // 15. LOGO HOVER ENHANCEMENT
+        // ============================================
+        const logoLinks = document.querySelectorAll('.logo');
+
+        logoLinks.forEach(logo => {
+            const icon = logo.querySelector('svg, img');
+            const text = logo.querySelector('span, .logo-text');
+
+            if (icon) icon.classList.add('logo-icon');
+            if (text) text.classList.add('logo-text');
+        });
+
+        // ============================================
+        // 16. FLOATING TECH BADGES
+        // ============================================
+        const techTags = document.querySelectorAll('.portfolio-tech span, .tech-tag');
+        techTags.forEach(tag => {
+            tag.classList.add('tech-tag');
+        });
+
+        // ============================================
+        // 17. INTERACTIVE HOVER SOUND (Optional - Visual feedback instead)
+        // ============================================
+        const interactiveHoverElements = document.querySelectorAll('.btn, .service-card, .portfolio-card');
+
+        interactiveHoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.transition = 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            });
+        });
+
+        // ============================================
+        // 18. SCROLL-TRIGGERED ANIMATIONS ENHANCEMENT
+        // ============================================
+        const enhancedObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.gradient-blob').forEach(blob => {
+            enhancedObserver.observe(blob);
+        });
+
         console.log('✨ Eregion Labs - Elite visual effects loaded');
+        console.log('🚀 Next-level effects activated');
     </script>
 </body>
 </html>
